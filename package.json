@@ -1,7 +1,7 @@
 {
   "name": "front-app",
   "version": "0.0.0",
-  "homepage": "https://psolak.github.io",
+  "homepage": "https://psolak.github.io/Piano",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
