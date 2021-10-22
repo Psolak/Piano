@@ -12,17 +12,29 @@ export class PianoComponent implements OnInit {
   colors:string[];
   guessme:number;
   notes: string[];
+  scale: string;
+  played: boolean;
+  turn: number;
+  score: number;
+  maxturn: number;
+  percentage: number;
 
   constructor() {
 
     this.colors = ["", "", "", "", "", "", "", "", "", "", "", ""];
     this.notes = ["C", "Csharp", "D", "Dsharp", "E", "F", "Fsharp", "G", "Gsharp", "A", "Asharp", "B"]
     this.guessme = -1;
+    this.played = false;
+    this.scale = ""
+    this.maxturn = 10;
+    this.turn = 0
+    this.score = 0;
+    this.percentage = 0;
    }
 
 
   ngOnInit(): void {
-    
+    this.hideScore
   }
 
   public clickKey(n:number, show:boolean)
@@ -30,27 +42,43 @@ export class PianoComponent implements OnInit {
 
     if (this.guessme >= 0)
     {
-
       let oldColor = this.colors[n];
       if (n==this.guessme)
       {
       this.colors[n] = "right"
+      this.score++
       }
       else
       {
         this.colors[n] = "wrong"
       }
       setTimeout(() =>{
-        this.colors[n] = oldColor;
+        if (oldColor == "colored")
+          this.chooseScale(this.scale)
+        else
+          this.colors[n] = oldColor;
       }, 500)
-      this.guessme = -1;
+
+      this.turn++
+      this.percentage = (this.turn/this.maxturn)*100
+
+      if (this.turn < this.maxturn)
+      {
+        setTimeout( () => { this.guessNote() }, 1000 );
+      }
+
+      this.guessme = -1
+      this.showScore()
     }
     else if (show)
     {
       let oldColor = this.colors[n];
       this.colors[n] = "colored"
       setTimeout(() =>{
-        this.colors[n] = oldColor;
+        if (oldColor == "colored")
+          this.chooseScale(this.scale)
+        else
+          this.colors[n] = oldColor;
       }, 500)
     }
       
@@ -61,10 +89,20 @@ export class PianoComponent implements OnInit {
     audio.play()
   }
 
+  public guessMe()
+  {
+
+    this.percentage = 0;
+    this.score = 0
+    this.turn = 0
+    this.guessNote()
+
+  }
+
   public guessNote()
   {
+    this.showScore();
     this.guessme = -1;
-    let piano = new PianoComponent() 
     
     let index = Math.floor(Math.random() * (10))
     this.clickKey(index, false)
@@ -82,6 +120,7 @@ export class PianoComponent implements OnInit {
   public chooseScale(scale:string)
   {
     this.resetColors();
+    this.scale = scale;
     switch(scale)
     {
       case "C" :
@@ -106,10 +145,25 @@ export class PianoComponent implements OnInit {
         this.colors[10] = "scale"
         break;
       }
+      default:
+        this.resetColors();
     }
-
   }
-
-
-
+    /**
+     * showScore
+     */
+  public showScore() {
+      var show = document.getElementById("score");
+      if (show == null)
+        return
+      show.hidden = false
+      show.innerText = this.score + "/" + this.turn;
+  }
+  public hideScore() {
+    var show = document.getElementById("score");
+    if (show == null)
+      return
+    show.hidden = true
+  }
 }
+

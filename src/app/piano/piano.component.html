@@ -1,4 +1,8 @@
-<button (click)="guessNote()" type="button" class="btn btn-warning">Guess Note</button>
+<button [disabled]="turn > 0 && turn != maxturn"(click)="guessMe()" type="button" class="btn btn-warning" id="guessNote">Guess Note</button>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: {{percentage}}%"></div>
+</div>
+<p class="rcorners" id="score"></p>
 <div class="row">
     <div class="col">
       <div ngbDropdown class="d-inline-block">
