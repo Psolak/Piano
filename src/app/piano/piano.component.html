@@ -1,4 +1,4 @@
-<button (click)="guessNote()" type="button" class="btn btn-warning">Random Note</button>
+<button (click)="guessNote()" type="button" class="btn btn-warning">Guess Note</button>
 <div class="row">
     <div class="col">
       <div ngbDropdown class="d-inline-block">
@@ -12,44 +12,44 @@
 </div>
 <div class="piano">
         <div class="ckey">
-            <a (click)="clickKey(0)"> <img src="assets/{{colors[0]}}whitekey.png"/></a>
+            <a (click)="clickKey(0, true)"> <img src="assets/{{colors[0]}}whitekey.png"/></a>
         </div>
         <div class="dkey">
-            <a (click)="clickKey(2)"> <img src="assets/{{colors[2]}}whitekey.png"/></a>
+            <a (click)="clickKey(2, true)"> <img src="assets/{{colors[2]}}whitekey.png"/></a>
         </div>
         <div class="ekey">
-            <a (click)="clickKey(4)"> <img src="assets/{{colors[4]}}whitekey.png"/></a>
+            <a (click)="clickKey(4, true)"> <img src="assets/{{colors[4]}}whitekey.png"/></a>
         </div>
         <div class="fkey">
-            <a (click)="clickKey(5)"> <img src="assets/{{colors[5]}}whitekey.png"/></a>
+            <a (click)="clickKey(5, true)"> <img src="assets/{{colors[5]}}whitekey.png"/></a>
         </div>
         <div class="gkey">
-            <a (click)="clickKey(7)"> <img src="assets/{{colors[7]}}whitekey.png"/></a>
+            <a (click)="clickKey(7, true)"> <img src="assets/{{colors[7]}}whitekey.png"/></a>
         </div>
         <div class="akey">
-            <a (click)="clickKey(9)"> <img src="assets/{{colors[9]}}whitekey.png"/></a>
+            <a (click)="clickKey(9, true)"> <img src="assets/{{colors[9]}}whitekey.png"/></a>
         </div>
         <div class="bkey">
-            <a (click)="clickKey(11)"> <img src="assets/{{colors[11]}}whitekey.png"/></a>
+            <a (click)="clickKey(11, true)"> <img src="assets/{{colors[11]}}whitekey.png"/></a>
         </div>
 
         <div class="cskey blackkey">
-            <a (click)="clickKey(1)"> <img src="assets/{{colors[1]}}blackkey.png"/></a>
+            <a (click)="clickKey(1, true)"> <img src="assets/{{colors[1]}}blackkey.png"/></a>
         </div>
 
         <div class="dskey blackkey">
-            <a (click)="clickKey(3)"> <img src="assets/{{colors[3]}}blackkey.png"/></a>
+            <a (click)="clickKey(3, true)"> <img src="assets/{{colors[3]}}blackkey.png"/></a>
         </div>
         
         <div class="fskey blackkey">
-            <a (click)="clickKey(6)"> <img src="assets/{{colors[6]}}blackkey.png"/></a>
+            <a (click)="clickKey(6, true)"> <img src="assets/{{colors[6]}}blackkey.png"/></a>
         </div>
 
         <div class="gskey blackkey">
-            <a (click)="clickKey(8)"> <img src="assets/{{colors[8]}}blackkey.png"/></a>
+            <a (click)="clickKey(8, true)"> <img src="assets/{{colors[8]}}blackkey.png"/></a>
         </div>
 
         <div class="askey blackkey">
-            <a (click)="clickKey(10)"> <img src="assets/{{colors[10]}}blackkey.png"/></a>
+            <a (click)="clickKey(10, true)"> <img src="assets/{{colors[10]}}blackkey.png"/></a>
         </div>
 </div>
